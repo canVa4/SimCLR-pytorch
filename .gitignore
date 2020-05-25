@@ -129,7 +129,6 @@ runs/May25_16-01-41_6016361f578f/checkpoints/model.pth
 runs/May25_16-01-41_6016361f578f/events.out.tfevents.1590393701.6016361f578f.47485.0
 runs/May25_16-01-41_6016361f578f/logistic-t=0.2.txt
 runs/sumarry.markdown
-Short-term report-朱翔-BUPT.pdf
 eval.py
 ForLearning.py
 loss/__pycache__/margin_triplet.cpython-37.pyc
