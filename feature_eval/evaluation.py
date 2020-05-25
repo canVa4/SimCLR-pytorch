@@ -88,7 +88,7 @@ def linear_model_eval(X_train, y_train, X_test, y_test):
 if __name__ == "__main__":
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print("Using device:", device)
-    folder = '../runs/May23_16-14-04_6016361f578f'
+    folder = '../runs/May25_20-08-56_6016361f578f'
     checkpoints_folder = os.path.join(folder, 'checkpoints')
     config = yaml.load(open(os.path.join(checkpoints_folder, "config.yaml"), "r"))
     evaluation(checkpoints_folder, config, device)

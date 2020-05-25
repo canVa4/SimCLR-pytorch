@@ -20,7 +20,7 @@
 
 Linear evaluation均使用Logistic Regression，均train from scratch（no pretrain）
 
-GPU: 1080ti    resnet50训练+测试一次需5.5h；resnet18训练+测试一次需2.6h
+GPU: 1080ti    resnet50训练+测试一次需5.5h；resnet18训练+测试一次需2.6h；总代码运行时间：约75.4h（包括未列出测试）
 
 | batch | epoch | out dim | optimizer | Loss                   | BackBone | t/m  | CIARF10 Top-1 |
 | ----- | ----- | ------- | --------- | ---------------------- | -------- | ---- | ------------- |
@@ -35,8 +35,8 @@ GPU: 1080ti    resnet50训练+测试一次需5.5h；resnet18训练+测试一次�
 | 128   | 80    | 128     | ADAM      | NT-Logistic (sampling) | resnet50 | 0.5  | 69.9%         |
 | 128   | 80    | 128     | ADAM      | NT-Logistic (sampling) | resnet50 | 1    | 66.2%         |
 | 128   | 80    | 128     | LARS      | NT-xent                | resnet50 | 0.5  | TODO          |
-| 128   | 80    | 128     | ADAM      | NT-xent                | resnet18 | 0.5  | 72.4%         |
-| 128   | 80    | 128     | ADAM      | NT-Logistic(weight)    | resnet18 | 0.2  |               |
+| 128   | 80    | 128     | ADAM      | NT-xent                | resnet18 | 0.5  | 71.4%         |
+| 128   | 80    | 128     | ADAM      | NT-Logistic(weight)    | resnet18 | 0.2  | 64.5%         |
 
 ## 损失函数
 
@@ -71,7 +71,7 @@ GPU: 1080ti    resnet50训练+测试一次需5.5h；resnet18训练+测试一次�
 解决办法：
 
 * 对反例样本对使用简单的under-sampling（欠采样）
-* 对于loss计算时，正反例样本设置不同的权重
+* 对于loss计算时，正反例样本设置不同的权重（效果更好，因为欠采样会丢失部分信息）
 
 （注：由于训练时间太久，没有来得多次跑weight测试效果）
 
@@ -125,7 +125,7 @@ GPU: 1080ti    resnet50训练+测试一次需5.5h；resnet18训练+测试一次�
 
 此公式理解起来相对直观，即对于一个输入样本，计算其和一个负样本相似度减去和正样本的相似度在加上m，并与0取max。该m可以理解：m越大为希望正反样本分开的距离越大。其目标是希望输入样本和正样本的相似度减去和负样本的相似度可以大于阈值m值。下图很形象的描述了这些关系。
 
-<img src="D:\MLandDeeplearning\SimCLR\SimCLR-pytorch\image\triplet1.PNG" style="zoom:67%;" />
+<img src=".\image\triplet1.PNG" style="zoom:67%;" />
 
 所以，对于每一个输入样本k，该样本的**margin tripl loss**为$$ \sum_{i}^{所有反类}max(u_k^Tv_i^--u_k^Tv^+m,0) $$
 

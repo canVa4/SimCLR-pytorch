@@ -134,3 +134,6 @@ ForLearning.py
 loss/__pycache__/margin_triplet.cpython-37.pyc
 loss/__pycache__/nt_logistic.cpython-37.pyc
 loss/__pycache__/nt_xent.cpython-37.pyc
+runs/May25_20-08-56_6016361f578f/checkpoints/config.yaml
+runs/May25_20-08-56_6016361f578f/checkpoints/model.pth
+runs/May25_20-08-56_6016361f578f/events.out.tfevents.1590408536.6016361f578f.4637.0
