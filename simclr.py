@@ -43,7 +43,6 @@ class SimCLR(object):
         self.model = ResNetSimCLR(**self.config["model"]).to(self.device)
         self.loss_func = self._choose_loss()
 
-
     def _choose_loss(self):
         if self.config['loss_select'] == 'NT_Xent':
             print("using NT_Xent as loss func")
@@ -53,7 +52,8 @@ class SimCLR(object):
             return NTLogisticLoss(self.device, self.config['batch_size'], **self.config['loss'])
         elif self.config['loss_select'] == 'MarginTriplet':
             print("using MarginTriplet as loss func")
-            return MarginTripletLoss(self.device, self.config['batch_size'], self.config['semi_hard'],**self.config['loss'])
+            return MarginTripletLoss(self.device, self.config['batch_size'], self.config['semi_hard'],
+                                     **self.config['loss'])
         else:
             print('not a valid loss, use NT_Xent as default')
             return NTXentLoss(self.device, self.config['batch_size'], **self.config['loss'])
@@ -86,8 +86,8 @@ class SimCLR(object):
 
         if self.config['optimizer'] == 'LARS':
             print('using LARS as optimizer.')
-            optimizer = LARS(model.parameters(), lr=0.3 * self.batch_size/256, eta=1e-3,
-                                         weight_decay=eval(self.config['weight_decay']))
+            optimizer = LARS(model.parameters(), lr=0.3 * self.batch_size / 256, eta=1e-3,
+                             weight_decay=eval(self.config['weight_decay']))
         elif self.config['optimizer'] == 'SGD':
             print('using SGD as optimizer. In order to obtain less space')
             optimizer = torch.optim.SGD(model.parameters(), 3e-4, weight_decay=eval(self.config['weight_decay']))
@@ -152,7 +152,7 @@ class SimCLR(object):
                 scheduler.step()
             self.writer.add_scalar('cosine_lr_decay', scheduler.get_lr()[0], global_step=n_iter)
             end_time = time.time()
-            print('In epoch {0}, time cost:{1}'.format(epoch_counter, end_time-start_time))
+            print('In epoch {0}, time cost:{1}'.format(epoch_counter, end_time - start_time))
 
     def _load_pre_trained_weights(self, model):
         try:

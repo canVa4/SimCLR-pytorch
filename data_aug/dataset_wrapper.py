@@ -21,9 +21,10 @@ class DataSetWrapper(object):
         data_augment = self._get_simclr_pipeline_transform()
 
         # train_dataset = datasets.STL10('./data', split='train+unlabeled', download=True,
-                                       # transform=SimCLRDataTransform(data_augment))
+        # transform=SimCLRDataTransform(data_augment))
 
-        train_dataset = datasets.CIFAR10(root='./data/CIFAR10', download=True, transform=SimCLRTransform(data_augment))
+        train_dataset = datasets.CIFAR10(root='./data/CIFAR10', train=True,
+                                         download=True, transform=SimCLRTransform(data_augment))
 
         train_loader, valid_loader = self.get_train_validation_data_loaders(train_dataset)
         return train_loader, valid_loader

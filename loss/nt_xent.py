@@ -61,7 +61,6 @@ class NTXentLoss(torch.nn.Module):
 
         labels = torch.zeros(2 * self.batch_size).to(self.device).long()
         loss = self.criterion(logits, labels)
-
         # print(loss)
         # o1 = torch.nn.LogSoftmax(dim=1)
         # o2 = torch.nn.NLLLoss(reduction='none')
@@ -74,22 +73,22 @@ class NTXentLoss(torch.nn.Module):
 
 
 def main():
-    Loss = NTXentLoss('cpu', 3, 0.5, True)
+    Loss = NTXentLoss('cuda', 3, 0.5, True)
+    print(Loss.mask_samples_from_same_repr)
     testi = np.array([
         [0.5, 0.5, 0],
         [0.2, 0.4, 0.2],
         [0.1, 0.8, 0.1]
-                     ])
+    ])
 
     testj = np.array([
         [0.5, 0.5, 0],
         [0.2, 0.4, 0.2],
         [0.1, 0.8, 0.1]
     ])
+
     xi = torch.tensor(testi)
     xj = torch.tensor(testj)
-    # xi = torch.rand((3, 6))
-    # xj = torch.rand((3, 6))
     loss = Loss(xi, xj)
     print(loss)
 

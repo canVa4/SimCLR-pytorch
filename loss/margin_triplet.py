@@ -10,7 +10,7 @@ class MarginTripletLoss(torch.nn.Module):
         self.device = device
         self.mask_samples_from_same_repr = self._get_correlated_mask().type(torch.bool)
         self.similarity_function = self._get_similarity_function(use_cosine_similarity)
-        self.semi_hard = semi_hard
+        self.semi_hard = semi_hard  # True 使用semi-hard
         # self.ReLU = torch.nn.ReLU()
 
     def _get_correlated_mask(self):
@@ -53,14 +53,13 @@ class MarginTripletLoss(torch.nn.Module):
         r_pos = torch.diag(similarity_matrix, -self.batch_size)
         positives = torch.cat([l_pos, r_pos]).view(2 * self.batch_size, 1)
 
-        mid = similarity_matrix[self.mask_samples_from_same_repr]
-        negatives = mid.view(2 * self.batch_size, -1)
-        zero = torch.zeros(1)
+        negatives = similarity_matrix[self.mask_samples_from_same_repr].view(2 * self.batch_size, -1)
+        zero = torch.zeros(1).to(self.device)
         triplet_matrix = torch.max(zero, negatives - positives + self.m_param)
         # 2N,2N-2 每一行代表了对于一个z关于其正类（z+batch）和其他反类的triplet loss
         # triplet_matrix = self.ReLU(negatives - positives + self.m_param)
 
-        if self.semi_hard == True:
+        if self.semi_hard:
             # semi-hard
             semi_hard = - negatives + positives + self.m_param
             # print(semi_hard)
@@ -68,22 +67,18 @@ class MarginTripletLoss(torch.nn.Module):
             # print(semi_hard_mask)
             triplet_matrix_sh = triplet_matrix[semi_hard_mask]
             shape = triplet_matrix_sh.shape[0]
-            # print(shape)
             # print(triplet_matrix)
             # print(triplet_matrix_sh)
             loss = torch.sum(triplet_matrix_sh)
-            # print(loss/shape)
-            return loss/shape
+            return loss / shape
         else:
-            loss = torch.sum(triplet_matrix)     # max( sim(neg) - sim(pos) + m, 0)
-            return loss / (2*self.batch_size*(2*self.batch_size - 2))
+            loss = torch.sum(triplet_matrix)  # max( sim(neg) - sim(pos) + m, 0)
+            return loss / (2 * self.batch_size * (2 * self.batch_size - 2))
 
 
 if __name__ == "__main__":
-    Loss = MarginTripletLoss('cuda', 3, True, 0.1, True)
-    print(Loss.mask_samples_from_same_repr)
+    Loss = MarginTripletLoss('cuda', 3, 0.1, False, True)
     xi = torch.randn((3, 3))
     xj = torch.randn((3, 3))
-
     loss = Loss(xi, xj)
     print(loss)

@@ -1,16 +1,16 @@
-batch_size: 48
-epochs: 15
+batch_size: 128
+epochs: 80
 eval_every_n_epochs: 1
-fine_tune_from: None
+fine_tune_from: none
 log_every_n_steps: 5
 weight_decay: 10e-6
 fp16_precision: False
-loss_select: NT_Xent
+loss_select: NT_Logistic
 optimizer: ADAM
-semi_hard: True
+semi_hard: False
 model:
-  out_dim: 256
-  base_model: "resnet50"
+  out_dim: 128
+  base_model: resnet50
 
 dataset:
   s: 1
@@ -19,5 +19,5 @@ dataset:
   valid_size: 0.05
 
 loss:
-  temperature_or_m: 1
+  temperature_or_m: 0.2
   use_cosine_similarity: True

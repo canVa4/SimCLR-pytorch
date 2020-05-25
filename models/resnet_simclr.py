@@ -16,10 +16,10 @@ class ResNetSimCLR(nn.Module):
         del resnet_list[3]
         resnet_list[0] = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
         # 参考论文 B.9 修改第一个卷积层并去掉第一个max pooling并去掉最后一层
-        self.features = nn.Sequential(*resnet_list[:-1])    # 重建了一个resnet网络
+        self.features = nn.Sequential(*resnet_list[:-1])  # 重建了一个resnet网络
 
         # projection MLP
-        mid_out = num_ftrs//2
+        mid_out = num_ftrs // 2
         self.l1 = nn.Linear(num_ftrs, mid_out)
         self.l2 = nn.Linear(mid_out, out_dim)
 
@@ -42,5 +42,5 @@ class ResNetSimCLR(nn.Module):
 
 
 if __name__ == "__main__":
-    model = ResNetSimCLR('resnet18', 64)
-    print(model)
+    test = ResNetSimCLR('resnet50', 128)
+    print(test)

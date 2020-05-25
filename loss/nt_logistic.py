@@ -11,7 +11,7 @@ class NTLogisticLoss(torch.nn.Module):
         self.mask_samples_from_same_repr = self._get_correlated_mask().type(torch.bool)
         self.similarity_function = self._get_similarity_function(use_cosine_similarity)
         self.sigmoid = torch.nn.Sigmoid()
-        self.method = 1     # 0为原始版本，1为under-sampling，2为调整权重
+        self.method = 2  # 0为无操作  1为under-sampling  2为change weight
 
     def _get_correlated_mask(self):
         diag = np.eye(2 * self.batch_size)
@@ -54,34 +54,36 @@ class NTLogisticLoss(torch.nn.Module):
         positives = torch.cat([l_pos, r_pos]).view(2 * self.batch_size, 1)
         negatives = similarity_matrix[self.mask_samples_from_same_repr].view(2 * self.batch_size, -1) * -1
 
-        logits_pos = self.sigmoid(positives / self.temperature).log_()
-        logits_neg = self.sigmoid(negatives / self.temperature).log_()
+        logits_pos = self.sigmoid(positives / self.temperature)
+        logits_neg = self.sigmoid(negatives / self.temperature)
+        logits_pos = torch.log(logits_pos)
+        logits_neg = torch.log(logits_neg)
         if self.method == 1:
             # under-sampling
             all_one_vec = np.ones((1, 2 * self.batch_size,))
             all_zero_vec = np.zeros((1, 2 * self.batch_size * (2 * self.batch_size - 3)))
-            under_sampling_matrix = np.column_stack((all_one_vec, all_zero_vec)).flatten()
-            np.random.shuffle(under_sampling_matrix)
-            under_sampling_matrix = torch.tensor(under_sampling_matrix).view(
+            under_sampling_vec = np.column_stack((all_one_vec, all_zero_vec)).flatten()
+            np.random.shuffle(under_sampling_vec)
+            under_sampling_matrix = torch.tensor(under_sampling_vec).view(
                 (2 * self.batch_size, 2 * self.batch_size - 2)).type(torch.bool).to(self.device)
 
             logits_neg = logits_neg[under_sampling_matrix]
             loss = torch.sum(logits_pos) + torch.sum(logits_neg)
             return -loss
         elif self.method == 2:
-            neg_count = 2*self.batch_size*(2*self.batch_size - 2)
-            pos_count = 2*self.batch_size
-            loss = neg_count * torch.sum(logits_pos) + pos_count*torch.sum(logits_neg)
-            return -loss/(pos_count+neg_count)
+            neg_count = 2 * self.batch_size * (2 * self.batch_size - 2)
+            pos_count = 2 * self.batch_size
+            loss = neg_count * torch.sum(logits_pos) + pos_count * torch.sum(logits_neg)
+            return -loss / (pos_count + neg_count)
         else:
             total_logits = torch.cat((logits_pos, logits_neg), dim=1)
             loss = torch.sum(total_logits)
             return -loss
 
+
 if __name__ == "__main__":
     Loss = NTLogisticLoss('cuda', 3, 0.5, True)
-    print(Loss.mask_samples_from_same_repr)
-    xi = torch.rand((3, 3))
-    xj = torch.rand((3, 3))
+    xi = torch.randn((3, 3))
+    xj = torch.randn((3, 3))
     loss = Loss(xi, xj)
-    print(loss)
+
