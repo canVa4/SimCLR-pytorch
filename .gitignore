@@ -1,0 +1,137 @@
+
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/SimCLR-pytorch.iml
+.idea/vcs.xml
+__pycache__/LARS.cpython-37.pyc
+__pycache__/simclr.cpython-37.pyc
+data/CIFAR10/cifar-10-batches-py/batches.meta
+data/CIFAR10/cifar-10-batches-py/data_batch_1
+data/CIFAR10/cifar-10-batches-py/data_batch_2
+data/CIFAR10/cifar-10-batches-py/data_batch_3
+data/CIFAR10/cifar-10-batches-py/data_batch_4
+data/CIFAR10/cifar-10-batches-py/data_batch_5
+data/CIFAR10/cifar-10-batches-py/readme.html
+data/CIFAR10/cifar-10-batches-py/test_batch
+data/CIFAR10/cifar-10-python.tar.gz
+data/STL10/stl10_binary.tar.gz
+data/STL10/stl10_binary/class_names.txt
+data/STL10/stl10_binary/fold_indices.txt
+data/STL10/stl10_binary/test_X.bin
+data/STL10/stl10_binary/test_y.bin
+data/STL10/stl10_binary/train_X.bin
+data/STL10/stl10_binary/train_y.bin
+data/STL10/stl10_binary/unlabeled_X.bin
+data/stl10_binary.tar.gz
+data_aug/__pycache__/dataset_wrapper.cpython-37.pyc
+data_aug/__pycache__/gaussian_blur.cpython-37.pyc
+feature_eval/__pycache__/evaluation.cpython-37.pyc
+image/epoch 15 triplet.png
+image/epoch15 logistic.PNG
+image/epoch15 nt-xent.PNG
+image/GPU使用情况.PNG
+implement1.py
+LICENSE.txt
+models/__pycache__/resnet_simclr.cpython-37.pyc
+runs/May22_18-03-32_ZX/checkpoints/config.yaml
+runs/May22_18-03-32_ZX/checkpoints/model.pth
+runs/May22_18-03-32_ZX/events.out.tfevents.1590141815.ZX.22644.0
+runs/May22_18-12-12_ZX/checkpoints/config.yaml
+runs/May22_18-12-12_ZX/checkpoints/model.pth
+runs/May22_18-12-12_ZX/events.out.tfevents.1590142335.ZX.23028.0
+runs/May22_18-28-13_ZX/checkpoints/config.yaml
+runs/May22_18-28-13_ZX/checkpoints/model.pth
+runs/May22_18-28-13_ZX/events.out.tfevents.1590143296.ZX.21384.0
+runs/May22_18-28-13_ZX/model.pth
+runs/May22_18-28-13_ZX/train1.txt
+runs/May22_20-58-32_ZX/checkpoints/config.yaml
+runs/May22_20-58-32_ZX/checkpoints/model.pth
+runs/May22_20-58-32_ZX/events.out.tfevents.1590152315.ZX.5164.0
+runs/May22_20-58-32_ZX/train2.txt
+runs/May22_22-54-08_ZX/checkpoints/config.yaml
+runs/May22_22-54-08_ZX/checkpoints/model.pth
+runs/May22_22-54-08_ZX/events.out.tfevents.1590159251.ZX.17764.0
+runs/May22_22-54-08_ZX/train3.txt
+runs/May22_23-42-07_ZX/checkpoints/config.yaml
+runs/May22_23-42-07_ZX/checkpoints/model.pth
+runs/May22_23-42-07_ZX/events.out.tfevents.1590162131.ZX.12060.0
+runs/May22_23-42-07_ZX/train4.txt
+runs/May23_00-54-24_ZX/checkpoints/config.yaml
+runs/May23_00-54-24_ZX/checkpoints/model.pth
+runs/May23_00-54-24_ZX/events.out.tfevents.1590166467.ZX.15400.0
+runs/May23_00-54-24_ZX/train 5.txt
+runs/May23_09-31-21_ZX/checkpoints/config.yaml
+runs/May23_09-31-21_ZX/checkpoints/model.pth
+runs/May23_09-31-21_ZX/events.out.tfevents.1590197485.ZX.3656.0
+runs/May23_09-31-21_ZX/train.txt
+runs/May23_11-20-44_ZX/checkpoints/config.yaml
+runs/May23_11-20-44_ZX/events.out.tfevents.1590204047.ZX.12624.0
+runs/May23_11-22-47_ZX/checkpoints/config.yaml
+runs/May23_11-22-47_ZX/events.out.tfevents.1590204170.ZX.10152.0
+runs/May23_11-24-05_ZX/checkpoints/config.yaml
+runs/May23_11-24-05_ZX/checkpoints/model.pth
+runs/May23_11-24-05_ZX/events.out.tfevents.1590204248.ZX.19936.0
+runs/May23_11-24-05_ZX/train 7.txt
+runs/May23_21-13-09_6016361f578f/checkpoints/config.yaml
+runs/May23_21-13-09_6016361f578f/checkpoints/model.pth
+runs/May23_21-13-09_6016361f578f/events.out.tfevents.1590239589.6016361f578f.32211.0
+runs/May23_21-13-09_6016361f578f/train3.txt
+runs/May23_22-33-58_6016361f578f/checkpoints/config.yaml
+runs/May23_22-33-58_6016361f578f/checkpoints/model.pth
+runs/May23_22-33-58_6016361f578f/events.out.tfevents.1590244438.6016361f578f.34501.0
+runs/May23_22-33-58_6016361f578f/train4.txt
+runs/May23_23-53-59_6016361f578f/checkpoints/config.yaml
+runs/May23_23-53-59_6016361f578f/checkpoints/model.pth
+runs/May23_23-53-59_6016361f578f/events.out.tfevents.1590249239.6016361f578f.36413.0
+runs/May23_23-53-59_6016361f578f/train5.txt
+runs/May24_01-14-28_6016361f578f/checkpoints/config.yaml
+runs/May24_01-14-28_6016361f578f/checkpoints/model.pth
+runs/May24_01-14-28_6016361f578f/events.out.tfevents.1590254068.6016361f578f.39010.0
+runs/May24_01-14-28_6016361f578f/other train1 .txt
+runs/May24_11-40-07_6016361f578f/checkpoints/config.yaml
+runs/May24_11-40-07_6016361f578f/checkpoints/model.pth
+runs/May24_11-40-07_6016361f578f/events.out.tfevents.1590291607.6016361f578f.6057.0
+runs/May24_11-40-07_6016361f578f/trian used for test archtect.txt
+runs/May24_13-53-01_6016361f578f/checkpoints/config.yaml
+runs/May24_13-53-01_6016361f578f/checkpoints/model.pth
+runs/May24_13-53-01_6016361f578f/events.out.tfevents.1590299581.6016361f578f.10538.0
+runs/May24_13-53-01_6016361f578f/train triplet only test set.txt
+runs/May24_15-07-07_6016361f578f/checkpoints/config.yaml
+runs/May24_15-07-07_6016361f578f/checkpoints/model.pth
+runs/May24_15-07-07_6016361f578f/events.out.tfevents.1590304027.6016361f578f.12369.0
+runs/May24_15-07-07_6016361f578f/test set for triplet sh.txt
+runs/May24_16-22-39_6016361f578f/checkpoints/config.yaml
+runs/May24_16-22-39_6016361f578f/checkpoints/model.pth
+runs/May24_16-22-39_6016361f578f/events.out.tfevents.1590308559.6016361f578f.14236.0
+runs/May24_18-05-01_6016361f578f/checkpoints/config.yaml
+runs/May24_18-05-01_6016361f578f/checkpoints/model.pth
+runs/May24_18-05-01_6016361f578f/events.out.tfevents.1590314701.6016361f578f.16881.0
+runs/May24_18-05-01_6016361f578f/trian triplet 1.txt
+runs/May24_23-10-24_6016361f578f/checkpoints/config.yaml
+runs/May24_23-10-24_6016361f578f/checkpoints/model.pth
+runs/May24_23-10-24_6016361f578f/events.out.tfevents.1590333024.6016361f578f.23780.0
+runs/May24_23-10-24_6016361f578f/triplet 0.8.txt
+runs/May25_04-07-34_6016361f578f/checkpoints/config.yaml
+runs/May25_04-07-34_6016361f578f/checkpoints/model.pth
+runs/May25_04-07-34_6016361f578f/events.out.tfevents.1590350854.6016361f578f.30281.0
+runs/May25_04-07-34_6016361f578f/nt logistic t= .txt
+runs/May25_09-41-21_6016361f578f/checkpoints/config.yaml
+runs/May25_09-41-21_6016361f578f/checkpoints/model.pth
+runs/May25_09-41-21_6016361f578f/events.out.tfevents.1590370881.6016361f578f.37886.0
+runs/May25_09-41-21_6016361f578f/triplet sh m =0.8.txt
+runs/May25_14-43-36_6016361f578f/checkpoints/config.yaml
+runs/May25_14-43-36_6016361f578f/checkpoints/model.pth
+runs/May25_14-43-36_6016361f578f/events.out.tfevents.1590389016.6016361f578f.45259.0
+runs/May25_14-43-36_6016361f578f/test for logistic down samlping.txt
+runs/May25_16-01-41_6016361f578f/checkpoints/config.yaml
+runs/May25_16-01-41_6016361f578f/checkpoints/model.pth
+runs/May25_16-01-41_6016361f578f/events.out.tfevents.1590393701.6016361f578f.47485.0
+runs/May25_16-01-41_6016361f578f/logistic-t=0.2.txt
+runs/sumarry.markdown
+Short-term report-朱翔-BUPT.pdf
+eval.py
+ForLearning.py
+loss/__pycache__/margin_triplet.cpython-37.pyc
+loss/__pycache__/nt_logistic.cpython-37.pyc
+loss/__pycache__/nt_xent.cpython-37.pyc
