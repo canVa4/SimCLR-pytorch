@@ -1,0 +1,23 @@
+batch_size: 48
+epochs: 15
+eval_every_n_epochs: 1
+fine_tune_from: None
+log_every_n_steps: 5
+weight_decay: 10e-6
+fp16_precision: False
+loss_select: NT_Xent
+optimizer: ADAM
+semi_hard: True
+model:
+  out_dim: 256
+  base_model: "resnet50"
+
+dataset:
+  s: 1
+  input_shape: (32,32,3)
+  num_workers: 0
+  valid_size: 0.05
+
+loss:
+  temperature_or_m: 1
+  use_cosine_similarity: True
